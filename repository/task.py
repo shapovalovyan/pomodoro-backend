@@ -2,7 +2,7 @@ from sqlalchemy import select, delete, update
 from sqlalchemy.orm import Session 
 
 
-from database import Tasks
+from models import Tasks
 from schema import TaskSchema
 
 
@@ -14,7 +14,7 @@ class TaskRepository:
     
 
 
-    def get_tasks(self):
+    def get_tasks(self) -> list[Tasks]:
 
         with self.db_session() as session:
             task: list[Tasks] = session.execute(select(Tasks)).scalars().all()

@@ -7,6 +7,8 @@ class TaskSchema(BaseModel):
     name: str | None = None
     pomodoro_count: int | None = None
     category_id: int
+    user_id: int
+
 
     class Config:
         from_attributes = True
@@ -18,4 +20,10 @@ class TaskSchema(BaseModel):
         if self.name is None and self.pomodoro_count is None:
             raise ValueError('Ошибка!!!')
         
-        return self 
+        return self
+
+
+class TaskCreateSchema(BaseModel):
+    name: str | None = None
+    pomodoro_count: int | None = None
+    category_id: int
